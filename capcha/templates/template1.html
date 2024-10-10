@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reCaptcha</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="{% static 'js/functions.js' %}"></script>
+</head>
+<body>
+        <div class="selection_options">
+            <h1 class="titulos">¡Elige tu desafío! ¿Qué te gustaría jugar?</h1>
+            <div class="butons_selection">
+                <button class="button_comprub2" id="show_plants">PLANTAS</button>
+                <button class="button_comprub2" id="show_animals">ANIMALES</button>
+            </div>
+        </div>
+        
+        <div class="chaptcha_section" id="plants" style="display: none;">
+            <h3>reCAPTCHA <img class="image_captcha" src="{% static 'images/RecaptchaLogo.svg.png' %}" alt=""></h3>
+            <div class="text_content">
+                <h4>Selecciona las imágenes con: </h4>
+                <p>Flores</p>
+            </div>
+            <div class="images">
+                {% for planta in plantas %}
+                <img propiedad="{{ planta.is_flower }}" class="capchaimages" id="capchaimages" src="{% static 'images/' %}{{ planta.imagen }}" alt="">
+                {% endfor %}
+            </div>
+            <div class="button">
+                <button class="button_comprub" id="bt_validar_plants">Comprobar</button>
+            </div>
+        </div> 
+    
+        <div class="chaptcha_section" id="animals" style="display: none;">
+            <h3>reCAPTCHA <img class="image_captcha" src="{% static 'images/RecaptchaLogo.svg.png' %}" alt=""></h3>
+            <div class="text_content">
+                <h4>Selecciona las imágenes con: </h4>
+                <p>Perros</p>
+            </div>
+            <div class="images">
+                {% for animal in animales %}
+                <img propiedad="{{ animal.is_dog }}" class="capchaimages" id="capchaimages" src="{% static 'images/' %}{{ animal.imagen }}" alt="">
+                {% endfor %}
+            </div>
+            <div class="button">
+                <button class="button_comprub" id="bt_validar_animals">Comprobar</button>
+            </div>
+        </div>         
+</body>
+
+</html>

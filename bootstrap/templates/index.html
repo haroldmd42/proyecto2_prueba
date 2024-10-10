@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Bootstrap</title>
+    <link rel="stylesheet" href="{% static 'css/styleBT.css' %}">
+</head>
+
+<body>
+    <h1 class="text-center pb-3">Tareas Diarias</h1>
+    <div class="row">
+        {% for oficio in oficios %}
+        <div class="col">
+            <div class="card" style="width: 10rem;">
+                <img src="{% static 'images/' %}{{ oficio.imagen }}" class="card-img-top" style="width: 10rem;"
+                    alt="{{ oficio.office_name }}">
+                <div class="card-body">
+                    <p class="card-text">{{ oficio.office_name }}</p>
+                </div>
+                <button class="btn btn-primary add-card-task" type="button" data-task-name="{{ oficio.office_name }}">Agregar</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="container text-center">
+                <h1 class="text-center pt-3">Agregar una nueva tarea</h1>
+                <!-- Formulario -->
+                <div>
+                    <form id="task-form" class="mt-4" action="#">
+                        <div class="input-group">
+                            <input type="text" id="task-input" class="form-control" placeholder="Nueva tarea">
+                            <button class="btn btn-primary" type="submit">Agregar</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Lista de tareas -->
+                <div>
+                    <ul id="task-list" class="list-group mt-3"></ul>
+                </div>
+            </div>
+        </div>
+        <!-- Lista de tareas completadas -->
+        <div class="col">
+            <h1 class="text-center pt-3">Tareas Completadas</h1>
+            <ul id="completed-task-list" class="list-group mt-3"></ul>
+        </div>
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'js/function2.js' %}"></script>
+</body>
+
+</html>
